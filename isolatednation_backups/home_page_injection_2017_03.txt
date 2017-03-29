@@ -1,0 +1,87 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+ <script>
+     Y.on('domready', function () {
+         var galleries = Y.Squarespace.GalleryManager.getGalleries();
+         var duration = 7000;
+         var gallery=galleries[0];
+         var carousel=gallery["gallery-design"];
+         var totalGroups=5;
+         var currentGroup=0
+         var container=gallery.get("container");
+         var nextBtn=Y.one(gallery.get("elements.next")._nodes[0]).on("click",function(e){
+             e.preventDefault();
+             e.stopPropagation();
+             advanceCarousel()
+         })
+         var prevBtn=Y.one(gallery.get("elements.previous")._nodes[0]).on("click",function(e){
+             e.preventDefault();
+             e.stopPropagation();
+             backupCarousel()
+         })
+         Y.one(container._node).get('parentNode').on("mouseover",function(){
+             clearInterval(myInterval)
+         })
+         Y.one(container._node).get('parentNode').on("mouseout",function(){
+             clearInterval(myInterval)
+             setMyInterval()
+         })
+         var myInterval;
+         function setMyInterval(){
+             myInterval = setInterval(function(){
+                 advanceCarousel()
+             },duration)
+         }
+         setMyInterval();
+         function advanceCarousel(){
+             if(currentGroup==(totalGroups-1)){
+                 currentGroup=0;
+             }else{
+                 currentGroup++;
+             }   
+             carousel.goToGroup(currentGroup);
+         }
+         function backupCarousel(){
+             if(currentGroup==0){
+                 currentGroup=totalGroups-1
+             }else{
+                 currentGroup--;
+             }
+             carousel.goToGroup(currentGroup);
+         }
+     });
+ </script>
+
+
+<style>
+#block-yui_3_17_2_2_1472608231122_56438, #block-yui_3_17_2_10_1472568476227_105203 {
+padding-top: 0px;
+ padding-bottom: 0px;
+}
+</style>
+
+<style>
+/*  .site-page {
+    padding-top:60px!important;
+  }*/
+  
+  .sqs-block-summary-v2 {
+    padding-bottom:0px!important;
+	}
+  
+  #block-yui_3_17_2_1_1407937366666_284477 {
+    padding-top:0px!important;
+  }
+</style>
+
+<style>
+#block-yui_3_17_2_1_1407311800611_411986 {
+  padding-bottom: 17px!important
+</style>

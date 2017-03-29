@@ -1,0 +1,83 @@
+<meta name="msvalidate.01" content="65409DBAB5CA65F2DED76CEB3F053E3B" />
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!--CREATE MAIN NAV BAR-->
+<script>
+ 
+ (function customJS() {
+ 
+   /**
+    * Copy the main navigation to the header
+    */
+   function copyMainNavToHeader () {
+ 
+     if (document.getElementById('sideTrayWrapper')) {
+ 
+       var mainNav = document.getElementById('mainNavigation');
+ 
+       // Clone main navigation
+       var mainNavClone = mainNav.cloneNode(true);
+ 
+       // Change id
+       mainNavClone.setAttribute('id', 'headerMainNavigation');
+ 
+       // Add class
+       mainNavClone.classList.add('main-navigation--header');
+ 
+       // Add the cloned navigation in the header
+       var header = document.getElementById('headerAnnouncementWrapper')
+       header.appendChild(mainNavClone);
+ 
+       // Update top margin for the #page
+       var page = document.getElementById('page');
+       page.style.marginTop = header.offsetHeight + 'px';
+ 
+     }
+   }
+ 
+   // Add the cloned navigation in the header right after #header will be ready
+   Y.on('contentready', copyMainNavToHeader, 'header');
+ 
+ })();
+ 
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+  function shrink() {$('.logo-image').find('img').attr('src', 'https://static1.squarespace.com/static/5114c744e4b044f8ed62c985/t/588d7822b8a79b901b5df2a2/1485666338713/rsz_trimmed25.png')}
+    function expand() {$('.logo-image').find('img').attr('src', 'https://static1.squarespace.com/static/5114c744e4b044f8ed62c985/t/588c37d8725e255eac60a4f5/1485665160772/?format=1500w')}
+</script>
+
+
+<script>
+    function init() {
+        window.addEventListener('scroll', function(e){
+            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                shrinkOn = 300,
+                headerElement = document.querySelector('.branding'),
+                navBar = document.getElementById('headerMainNavigation'),
+				mainHeader = document.getElementById('header'),
+				mainWrapper = document.getElementById('headerAnnouncementWrapper');
+            if (distanceY > shrinkOn) {shrink(),
+              headerElement.setAttribute('style', 'top:5px!important'),
+              navBar.setAttribute('style','margin-top:-25px'),
+              mainHeader.setAttribute('style','height:80px'),
+              mainWrapper.setAttribute('style','height:80px; margin-top:-10px!important'); 
+                                      } else {
+                if (navBar.hasAttribute('style','margin-top:-10px')) {
+                  navBar.setAttribute('style', 'position:unset!important;'),				  mainHeader.setAttribute('style','height:94px'),
+                  mainWrapper.setAttribute('style','height:130px'),
+                      expand();
+                }
+            }
+				});
+		}
+	window.onload = init();
+</script>

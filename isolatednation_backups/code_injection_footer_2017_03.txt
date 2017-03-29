@@ -1,0 +1,9 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
+
+<script src="https://isolatednation.com/s/mainscroll.js"></script>
+
+<script>
+// Always show the comments instead of having "click to show comments"
+  document.getElementsByClassName("blog-item-comments-toggle")[0].click();
+</script>
